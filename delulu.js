@@ -12,9 +12,8 @@ const startDate = new Date('2023-11-14T00:00:00Z').getTime();
       const counterElement = document.getElementById('delulucounter');
       counterElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
-      // Update the counter every second
       setTimeout(updateCounter, 1000);
     }
-
-    // Initial call to start the counter
     updateCounter();
+
+    //delulu karyll

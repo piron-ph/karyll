@@ -1,21 +1,20 @@
-var targetDate = new Date('11/15/2023 00:00:00');
+const startDate = new Date('2023-11-14T00:00:00Z').getTime();
 
-function updateCountdown() {
-  var currentDate = new Date();
+    function updateCounter() {
+      const currentDate = new Date().getTime();
+      const elapsedTime = currentDate - startDate;
 
-  var timeDifference = targetDate - currentDate;
+      const seconds = Math.floor(elapsedTime / 1000) % 60;
+      const minutes = Math.floor(elapsedTime / (1000 * 60)) % 60;
+      const hours = Math.floor(elapsedTime / (1000 * 60 * 60)) % 24;
+      const days = Math.floor(elapsedTime / (1000 * 60 * 60 * 24));
 
-  var days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+      const counterElement = document.getElementById('delulucounter');
+      counterElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
-  var countdownElement = document.getElementById('countdown');
-  countdownElement.innerHTML = days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's';
-}
+      // Update the counter every second
+      setTimeout(updateCounter, 1000);
+    }
 
-setInterval(updateCountdown, 1000);
-
-updateCountdown();
-
-//delulu karyll
+    // Initial call to start the counter
+    updateCounter();
